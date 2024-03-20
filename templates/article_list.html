@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Articles{% endblock title %}
+
+{% block content %}
+{% for article in article_list %}
+  <div class="card">
+    <div class="card-header">
+       <span class="font-weight-bold">
+      <a href="{% url 'article_detail' article.pk %}" class="card-link">{{ article.title }}</a>
+       </span>
+      <span class="text-muted"> posted by {{ article.author }} on {{ article.date }}</span>
+    </div>
+    <div class="card-body">
+      <p>{{ article.body }}</p>
+    </div>
+    <div class="card-header">
+      <a href="{% url 'article_edit' article.pk %}" class="card-link">Edit</a>
+      <a href="{% url 'article_delete' article.pk %}" class="card-link">Delete</a>
+    </div>
+    <!--for comments usage
+    <div class="card-footer">
+      {% for comment in article.comment_set.all %}
+        <p>
+          <span class="font-weight-bold">
+            {{ comment.author }} &middot;
+          </span>
+          {{ comment }}
+        </p>
+      {% endfor %}
+    </div>
+    -->
+  </div>
+<br />
+{% endfor %}
+{% endblock content %}

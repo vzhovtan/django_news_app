@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+  <h2>{{ object.title }}</h2>
+  <p>by {{ object.author }} on {{ object.date }}</p>
+  </div>
+
+  <div class="card-body">
+  <p>{{ object.body }}</p>
+  </div>
+</div>
+<!--for comments usage
+  <div class="card-body">
+  <hr>
+  <h4>Comments</h4>
+  {% for comment in article.comment_set.all %}
+    <p>{{ comment.author }} &middot; {{ comment }}</p>
+  {% endfor %}
+  <hr>
+  </div>
+
+  <div class="card-body">
+  <hr>
+  <h4>Add a comment</h4>
+  <form action="" method="post">{% csrf_token %}
+    {{ form|crispy }}
+    <button class="btn btn-info ml-2" type="submit">Save</button>
+  </form>
+  </hr>
+  </div>
+-->
+  <div class="card-header">
+    <a href="{% url 'article_edit' article.pk %}" class="card-link">Edit</a>
+    <a href="{% url 'article_delete' article.pk %}" class="card-link">Delete</a>
+    <a href="{% url 'article_list' %}" class="card-link">All Articles</a>
+  </div>
+</div>
+{% endblock content %}

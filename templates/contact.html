@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <div class=".container-fluid">
+    <section class="tm-margin-b-l">
+      <header>
+        <h2 class="tm-main-title">Let's get in touch</h2>
+      </header>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Pellentesque habitant morbi tristique senectus et netus et malesuada. Nec tincidunt praesent
+          semper feugiat.</p>
+    </section>
+{% else %}
+<div class=".container-fluid">
+  {% include "notlogged.html" %}
+</div>
+{% endif %}
+{% endblock content %}
